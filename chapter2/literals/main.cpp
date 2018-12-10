@@ -14,6 +14,7 @@
 //    C-style string	“Hello, world!”	const char[14] 
 // 4) String literals are handled very strangely in C++. It’s fine to use string literals to print text with std::cout, but don’t try and assign
 //    them to variables or pass them to functions -- it either won’t work, or won’t work like you’d expect.
+// 5) In a way, literals are constants that are not explictly defined as consts (meaning, without the usage of the const keyword).
 // =================================================================================================================================================
 // =================================================================================================================================================
 
