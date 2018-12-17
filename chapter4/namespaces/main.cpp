@@ -6,6 +6,7 @@
 //    in which they are defined. This way we can define, for instance, two functions with the exact (!!) same signature in TWO DIFFERENT namespaces
 //    and use them both.
 // 2) Note that namespace can be EXPANDED throughout several files.
+// 3) In this case the compiler won't know to which "version" of the function doSomething it should call, so a compiler error will rise.
 // =================================================================================================================================================
 // =================================================================================================================================================
 
@@ -16,6 +17,12 @@
 #include "subCont.h"	// 2) 
 
 using namespace std;
+
+void callFuncWithoutNamespacePrefix()
+{
+	cout << "callFuncWithoutNamespacePrefix - start" << endl;
+	//int res = doSomething(12,15);
+}
 
 int main(int argc, char** argv)
 {

@@ -4,14 +4,18 @@
 // ---------------------------------------
 // 1) C++ (and C) has the ability to "share" variables accros files of the same program (project). In order to do so, we need to declare a variable
 //    in some "centralized" point "out side" of any function (see in the file globals.cpp).
-//    In this file (not where the global variable is defined) we need to "decalre" it using the "extern" keyword.
-// 2) A forward declration is required for functions as well when we DO NOT include the header file in which they are defined in.
+//    In all other files within the project (i.e.- NOT where the global variable is defined, like int this file) we need to "decalre" it using 
+//    the "extern" keyword - like telling to the compiler:"Some else in another place defined it, its all good..."
+// 2) A forward declration is required for functions as well when we DO NOT include the header file in which they are defined in (in this case
+//    the function fooInGlobalFile is defined in another cpp file and NOT in a header file, so we MUST forward-decalre it.
+///   NOTE:In the more "common case" where we DO include the header file in which the function is declared, than we DO NOT need to (also) forward-
+//    declare the function cause, unless specified otherwise, every function automatically has the "extern" modifier in her dfinition.
 // 3) In case a static modifer is applied to a global variable - it automatically limits the scope of the variable to the file where the variable
 //    is declared in. In other files, forward declrations of this variable will COMPILE, yet when it will be accessed, a LINKER error will rise.
 // 4) Functions are by default defined "with" the extern modifier. So in order to "enclose" them to a specific file, same goes here with the usage
 //    of the static keyword.
 // 5) In order to make global consts defined ONLY once, regardless of the number if times the header file in which they reside in is included,
-//    we can define them as constants who are extern in a unique namespace and declare them in a cpp file. This ensures that:
+//    we can define them as constants who are extern in a unique namespace and declare them within a single cpp file. This ensures that:
 //    a) No matter how many files include's them, they will be defined only once.
 //    b) Each time we modify one (or more) of these variables we need to compile ONLY the cpp file where they are defined, and NOT EVERY file that
 //       includes their header file as well (which can slow down dramatically the compilation proccess).
