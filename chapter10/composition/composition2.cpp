@@ -1,14 +1,15 @@
 // ===================================================================================================================================================================
 // ===================================================================================================================================================================
-// Composition1:
+// Composition2:
 // ------------
-// 1) Basic composition means that every member class (which is a class on its own as well) of the "parent" class, "lives" exactly the same as it father - it gets 
-//    destroyed while its father dtor is executed.
-//    Also, every class member, also DOES NOT know about its parent existence.It just exists.It does not need to know anything from/about its father class in order
-//    to do what it does.
-// 2) In case the member class DOES NOT have a default ctor, it MUST be initialized in the INITIALIZATION LIST of all the ctors of its parent class.
-// 3) In the "simple" case where both class members have default ctor AND they are NOT initialized in the parent ctor's initialization list, then they will created 
-//    in the order they are declared within the parent class (top to bottom). 
+// 1) In this example we will illustrate another "technique" to implement composition, this time in a more "risky" way - the composed class members will be kept as
+//    pointer.
+// 2) Due to the fact mentioned in the previous note, we need to make sure that the parent class:
+// 2a) Allocates the class members upon its creation (ALL ctors).
+// 2b) De-allocates the class members upon its destruction (Dtor).
+// --> Otherwise, we might (probably will) suffer from memory leaks.
+// NOTE: Even if we do so, we can still suffer from memory leak in the case that, for some (faulty) reason the parent dtor was NOT invoked at all (due to a crash 
+//       or some logic bug...).
 // 
 // ===================================================================================================================================================================
 // ===================================================================================================================================================================
@@ -25,12 +26,10 @@ public:
 		cout << "InnerClass1::InnerClass1 - set m_a:" << m_a << endl;
 	}
 
-	/* No default cotr	//2)
 	InnerClass1() : m_a(15)
 	{
 		cout << "InnerClass1::InnerClass1() - set m_a:" << m_a << endl;
 	}
-	*/
 
 	~InnerClass1()
 	{
@@ -67,25 +66,34 @@ private:
 
 class MyClass
 {
-public:				// 2)
-	MyClass(int a, int b) : m_innerClass1(a), /* m_innerClass2(a),*/ m_b(b)
+public:				
+	MyClass(int a, int b) 
+		: m_innerClass1(new InnerClass1(a))	// 2a)
+		, m_innerClass2(new InnerClass2(a))
+		, m_b(b)
 	{
 		cout << "MyClass::MyClass(int b) - set m_b to:" << m_b << endl;
 	}
-			// 2)
-	MyClass() : m_innerClass1(15), /*m_innerClass2(15),*/ m_b(17) 
+			
+	MyClass() 
+		: m_innerClass1(new InnerClass1(15))	// 2a)
+		, m_innerClass2(new InnerClass2(15))
+		, m_b(17) 
 	{
 		cout << "MyClass::MyClass() - m_b:" << m_b << endl;
 	}
 
 	~MyClass()
 	{
+		// 2b) 
+		delete m_innerClass1;
+		delete m_innerClass2;
 		cout << "MyClass::~MyClass" << endl;
 	}
 
 private:
-	InnerClass1 m_innerClass1;
-	InnerClass2 m_innerClass2;
+	InnerClass1* m_innerClass1;
+	InnerClass2* m_innerClass2;
 	int m_b;
 };
 
