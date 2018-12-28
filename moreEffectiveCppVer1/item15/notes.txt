@@ -1,0 +1,16 @@
+Some general notes about using exceptions:
+------------------------------------------
+1) There are both run-time and executable size impacts when your code using exceptions, EVEN if there are no no single try,catch, throw in your code (written by you).
+The costs includes stuff such as: book-keepingon which objects should be destroyed once we are catching an exception, to which catch block should an exception should be passed,
+and many more run-time and data structure for "offline" maintenence.
+2) Important note is, that even if none of our code uses exceptions explicitly, if at least one library (3rd party) we use link to iur executable DOES uses - our executable
+has to support it at the end -- so we end up paying the cost of using exceptions.
+3) Run time and code size penalty for ONLY writng try block (not even throwing one at run time) is ~5-10% in both aspects (code size bigger and program speed).
+4) Returing from an exception is about 3 times slower than returning from a normal function -- so in the very "rare" case where we think about using exception as a return 
+mechanism from a fuction -- we SHOULD think twice.
+
+Some relevant links:
+--------------------
+http://www.acodersjourney.com/2016/08/top-15-c-exception-handling-mistakes-avoid/
+
+https://stackoverflow.com/questions/7249378/disabling-c-exceptions-how-can-i-make-any-std-throw-immediately-terminate

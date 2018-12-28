@@ -1,0 +1,7 @@
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/CMakeFiles/rebuild_cache.dir
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/CMakeFiles/edit_cache.dir
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/CMakeFiles/stdThreadRaiiClassExampleExe.dir
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/CMakeFiles/throwExceptionFromCtorExampleExe.dir
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/stdThreadRaiiWrapper/CMakeFiles/rebuild_cache.dir
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/stdThreadRaiiWrapper/CMakeFiles/stdThreadRaiiWrapperLib.dir
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/build/stdThreadRaiiWrapper/CMakeFiles/edit_cache.dir

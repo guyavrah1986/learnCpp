@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/stdThreadRaiiWrapper/stdThreadRaiiWrapper.cpp
+glog/logging.h
+-
+stdThreadRaiiWrapper.h
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/stdThreadRaiiWrapper/stdThreadRaiiWrapper.h
+
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/stdThreadRaiiWrapper/stdThreadRaiiWrapper.h
+thread
+-
+

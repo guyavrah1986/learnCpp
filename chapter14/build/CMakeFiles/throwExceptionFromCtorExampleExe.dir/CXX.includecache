@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/guya/guya/dev/educationStuff/cppStuff/generalCppIdioms/exceptions/throwExcpetionFromCtor.cpp
+iostream
+-
+exception
+-
+
