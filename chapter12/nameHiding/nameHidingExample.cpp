@@ -1,18 +1,17 @@
+// ===================================================================================================================================================================
+// =================================================================================================================================================================== 
 // 
 //  Name hiding:
 // -------------
 // In C++ every name (of an object/funciton/enumration) that is defined in some "inner" scope, hides (eliminate) a similar name that exsits in an "outer scope".
-// So, here in this example, the fact that Derived class has a function called func1, which is NOT virtual, means that every function with the same name (not entire signature) 
-// will be "hiden" --> not visible (we will get a compiler error when trying to call it).
+// So, here in this example, the fact that Derived class has a function called func1, which is NOT virtual, means that every function with the same name (not 
+// entire signature) will be "hiden" --> not visible (we will get a compiler error when trying to call it).
 //
-//
-//
-
-
+// ===================================================================================================================================================================
+// =================================================================================================================================================================== 
 #include <iostream>
 
 using namespace std;
-
 
 class Base
 {
@@ -37,7 +36,6 @@ class Base
 		cout << "Base::func1(int) - got:" << i << endl;
 	}
 };
-
 
 class Derived : public Base
 {
