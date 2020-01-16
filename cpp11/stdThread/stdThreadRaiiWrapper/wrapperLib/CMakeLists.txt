@@ -3,14 +3,9 @@
 # ======================================================================================================================================
 cmake_minimum_required(VERSION 3.9)
 
-project("sampleUsageStdThreasRaiiWrapper")
+project(stdThreadRaiiWrapper)
 
 message(STATUS "processing CMakeLists of project:${CMAKE_PROJECT_NAME} within folder:${CMAKE_CURRENT_LIST_DIR}")
-
-# set the output directory for the executables, static and shared libraries are placed once finished to the build folder
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/build")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/build")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/build")
 
 # enable c++11
 set(CMAKE_CXX_STANDARD 11)
@@ -19,30 +14,29 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ======================================================================================================================================
 # include directories
 # ======================================================================================================================================
-include_directories(${CMAKE_CURRENT_LIST_DIR}/wrapperLib)
+# include_directories(${CMAKE_CURRENT_LIST_DIR}/../../globalIncludeDir)
 
 # ======================================================================================================================================
 # group all source files of the executable
 # ======================================================================================================================================
-file(GLOB_RECURSE MAIN_EXE_SRC "${CMAKE_CURRENT_LIST_DIR}/main.cpp") 
+file(GLOB_RECURSE STD_THREAD_RAII_WRAPPER_SRC "${CMAKE_CURRENT_LIST_DIR}/*.cpp"
+			    		      "${CMAKE_CURRENT_LIST_DIR}/*.h")
 
 # ======================================================================================================================================
 # add relevant sub directories -- invoke their CMakeLists.txt files
 # ======================================================================================================================================
-# utilities
-#add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/wrapperLib/ ${CMAKE_CURRENT_LIST_DIR}/build/wrapperLib)
-
-# unitTests
-#add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/unitTests ${CMAKE_CURRENT_LIST_DIR}/build/unitTests)
 
 
 # ======================================================================================================================================
-# create the main executable
+# create the library 
 # ======================================================================================================================================
-add_executable(mainExe ${MAIN_EXE_SRC})
+add_library(stdThreadRaiiWrapperLib SHARED ${STD_THREAD_RAII_WRAPPER_SRC})
+
    
 # ======================================================================================================================================
-# link the main executable with all relevant libraries
-# ======================================================================================================================================             
-target_link_libraries(mainExe pthread glog) # stdThreadRaiiWrapperLib
+# link the library with all other relevant libraries
+# ======================================================================================================================================
+if(UNIX AND NOT APPLE)
+    target_link_libraries(stdThreadRaiiWrapperLib pthread)
+endif()
 
