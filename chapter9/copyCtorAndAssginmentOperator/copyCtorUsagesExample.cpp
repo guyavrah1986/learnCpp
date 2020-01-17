@@ -3,8 +3,8 @@
 // copy Ctor:
 // ----------
 // 1) Has the signature that accept a const refernce to another (usually called "other") class type object. It is important to distinguish it from the assginment 
-//    operator in the fact that it is used to initiate a NEW object from an exsisting one. The assginment operator is used to initialize an already exisisting object
-//    from another object. So for example:
+//    operator in the fact that it is used to initiate a NEW object from an exsisting one. The assginment operator is used to initialize ("copy contents") an already 
+//    exisisting object from another object. So for example:
 //    MyStr myStr1; --> defualt ctor
 //    MyStr myStr2 = myStr1; --> copy ctor
 //    MyStr myStr3(myStr1);  --> copy ctor
@@ -34,6 +34,7 @@
 #include <iostream>
 #include <cstring>
 
+using namespace std; 
 
 class InnerObjValue 
 {
@@ -41,7 +42,7 @@ class InnerObjValue
 public:
 	InnerObjValue() : m_a(17)
 	{
-		std::cout << "InnerObjValue::InnerObjValue - setting m_a to:" << m_a << std::endl;
+		cout << "InnerObjValue::InnerObjValue - setting m_a to:" << m_a << endl;
 	}
 
 private:
@@ -60,13 +61,13 @@ public:
 			m_strLen = strlen(str);
 			m_cStr = new char [m_strLen + 1];
 			strcpy(m_cStr, str);
-			std::cout << "MyStr::MyStr - setting m_cStr to:" << m_cStr << " for a new object in the address of:" << this << std::endl;
+			cout << "MyStr::MyStr - setting m_cStr to:" << m_cStr << " for a new object in the address of:" << this << endl;
 		}
 	}
 
 	virtual ~MyStr()
 	{
-		std::cout << "MyStr::~MyStr - delete object in the address of:" << this << std::endl;	
+		cout << "MyStr::~MyStr - delete object in the address of:" << this << endl;	
 		if (m_cStr != nullptr)
 		{
 			delete [] m_cStr;
@@ -76,8 +77,7 @@ public:
 	
 	MyStr(const MyStr& other) : MyStr(other.m_cStr) //a) 
 	{
-		std::cout << "MyStr::MyStr& other (copy Ctor) - got other in the address of:" << &other << " ,created a copy in the address of:" << this << std::endl;
-		
+		cout << "MyStr::MyStr& other (copy Ctor) - got other in the address of:" << &other << " ,created a copy in the address of:" << this << endl;	
 	}
 
 	char* GetStr() const { return this->m_cStr; }
@@ -91,22 +91,22 @@ private:
 
 void passByValue(MyStr myStr)
 {
-	std::cout << "passByValue - got MyStr object with the string:" << myStr.GetStr() << " its address is:" << &myStr << std::endl;
+	cout << "passByValue - got MyStr object with the string:" << myStr.GetStr() << " its address is:" << &myStr << endl;
 }
 
 
 MyStr returnByVlaueWithElision(const char* str)
 {
 
-	std::cout << "returnByVlaueWithElision - got string:" << str << std::endl;
+	cout << "returnByVlaueWithElision - got string:" << str << endl;
 	MyStr tmp(str);
-	std::cout << "returnByVlaueWithElision - created MyStr with string:" << str << " in the address:" << &tmp << std::endl;
+	cout << "returnByVlaueWithElision - created MyStr with string:" << str << " in the address:" << &tmp << endl;
 	return tmp;
 }
 
 MyStr returnByValueNoElision(MyStr obj)
 {
-	std::cout << "returnByValueNoElision - got obj in the address of:" << &obj << std::endl;
+	cout << "returnByValueNoElision - got obj in the address of:" << &obj << endl;
 	// modify the m_b member
 	obj.m_b = 17;
 	return obj;
@@ -123,7 +123,7 @@ MyStr returnByValueNoElision(MyStr obj)
 int main(int argc, char** argv)
 {
 
-	std::cout << "main - start" << std::endl;
+	cout << "main - start" << endl;
 
 	const char* str = "test_str";	
 	MyStr myStr(str);
