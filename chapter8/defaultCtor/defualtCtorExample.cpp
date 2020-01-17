@@ -3,10 +3,10 @@
 // 1) default Ctor:
 // ----------------
 // a) As long as we have decalred and defined at least one Ctor of our own (does not matter which type of Ctor and how we implemented it) --> the defualt Ctor 
-// providied by the compiler is disabled (technically speaking - it is not public so it can not be used from outside of the class).
+// providied by the compiler is disabled (technically speaking - it is not public so it can NOT be used from outside of the class).
 //
 // b) Note that the values that the compiler's defualt constructor initializes the class members are garbage values - so we should not make any assumption on these
-// values (it follows the "C++ mantra" of "you dont ask for it - you dont get it, and you dont pay for it"). 
+// values (it follows the "C++ mantra" of "you don't ask for it - you dont get it, and you dont pay for it"). 
 //
 // c) In this example we created the argument Ctor --> so we also defined the defualt Ctor (it is not always neccssary).
 //
@@ -21,8 +21,8 @@
 //   will be discussed later...
 //
 // f) Note that if we switch between the order of declaration of the const stirng m_str and the m_innerObjWithString --> then, upon initialization of the m_innerObjWithString
-//    the const string is not yet defined and an undefined behaviour might take place (for example segmentation fault might occue when the uninitialized const stirng
-//    will be passed to the m_innerObjWithString object.
+//    the const string is not yet defined and an undefined behaviour might take place (for example segmentation fault might occur when the uninitialized const stirng
+//    will be passed to the m_innerObjWithString object).
 //    Note also, that because we invoked explictly the argument Ctor of the m_innerObjWithString object as part of the container class initializer list --> the defualt
 //    ctor of the m_innerObjWithString IS NOT CALLED. 
 // 
@@ -42,7 +42,7 @@ class InnerObjValue
 public:
 	InnerObjValue() : m_a(17)
 	{
-		std::cout << "InnerObjValue::InnerObjValue - setting m_a to:" << m_a << std::endl;
+		cout << "InnerObjValue::InnerObjValue - setting m_a to:" << m_a << endl;
 	}
 
 private:
@@ -56,7 +56,7 @@ class InnerObjPointer
 public:
 	InnerObjPointer() : m_c(15)
 	{
-		std::cout << "InnerObjPointer::InnerObjPointer - setting m_c to:" << m_c << std::endl;
+		std::cout << "InnerObjPointer::InnerObjPointer - setting m_c to:" << m_c << endl;
 	}
 
 private:
@@ -68,13 +68,13 @@ class InnerObjWithString
 {
 
 public:
-	InnerObjWithString(const std::string& str) : m_str(str) 
+	InnerObjWithString(const string& str) : m_str(str) 
 	{
-		std::cout << "InnerObjWithString::InnerObjWithString - m_str is set to:" << m_str << std::endl;
+		cout << "InnerObjWithString::InnerObjWithString - m_str is set to:" << m_str << endl;
 	}
 
 private:
-	std::string m_str;
+	string m_str;
 };
 
 class ContainerObj
@@ -83,13 +83,13 @@ class ContainerObj
 public:
 	ContainerObj() : m_innerObjWithString(m_str), m_d(22)
 	{
-		std::cout << "ContainerObj::ContainerObj - setting m_d to:" << m_d << std::endl;
+		cout << "ContainerObj::ContainerObj - setting m_d to:" << m_d << endl;
 	}
 
 private:
 
 	InnerObjValue m_innerObjByValue;
-	const std::string m_str = "const string";
+	const string m_str = "const string";
 	InnerObjWithString m_innerObjWithString;// f)
 	InnerObjPointer* m_innerObjByPointer;
 
