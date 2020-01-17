@@ -10,7 +10,7 @@
 //    Rule: Any variable that should not change values after initialization and whose initializer is known at compile-time should be declared as constexpr.
 //    Rule: Any variable that should not change values after initialization and whose initializer is not known at compile-time should be declared as const.
 // 5) Another approach to define contant variables is to use the #define directive. This is a BAD (!!) practice for two reasons:
-//    a) #define directive ALWAYS have ONLY ENTIRE file scope,so if another directive with the same name but different value can create conflicts.
+//    a) #define directive ALWAYS have ONLY ENTIRE file scope,so if another directive with the same name but different value exists - conflicts can rise.
 //    b) Any #define directive will NOT show up in the debbuger - which might cause the program to be harder to debug. 
 // ============================================================================================================================================================
 // ============================================================================================================================================================

@@ -22,6 +22,11 @@
 
 using namespace std;
 
+void printLiteralString(const char* str)
+{
+	cout << "printLiteralString - got string:" << str << endl;
+}
+
 int main(int argc, char** argv)
 {
 	cout << "main - start" << endl;
@@ -31,7 +36,8 @@ int main(int argc, char** argv)
 
 
 	const char* cStyleString = "This is a C style (literal) string";
-
+	printLiteralString(cStyleString);
+	
 	cout << "main - end" << endl;
 	return 0;
 }
