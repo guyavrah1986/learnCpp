@@ -6,10 +6,10 @@
 // In this example a "3-levels" inheritence chain will be used to illustrate the way it works.
 // 
 // 1) Calling a pure virtual function from within a CTOR will most likely cause a compiler/linker error.
-// 2) Calling a pure virtual function from some function is OK, cause eventually, the actuall object (at run-time) that will call the
+// 2) Calling a pure virtual function from some function is OK, cause eventually, the actuall object (at run-time after it was instancisated) that will call the
 //    the "encapsulating function" will be called by an object that DOES implement the pure virtual funcntion (otherwise it could not have
 //    been instanicated).   
-// 3) Whether we call a virtual function via Base class pointer OR reference, automatically we "invoke" the virtual functions mechanism.
+// 3) Whether we call a virtual function via Base class pointer OR reference, automatically we "invoke" the virtual functions mechanism (i.e. - method reolution order).
 //    Meaning, if the function that is called, again, via the pointer OR reference is virtual, then the MOST derived version of it will 
 //    be (eventually) invoked (dynamic binding).
 // 4) In this case it is even "simpler" than the previous case - the most derived flavor of the function will be invoked. 

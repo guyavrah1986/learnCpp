@@ -10,14 +10,16 @@
 //    # Derived's members
 // 2) The address of the "this" pointer of the Derived class is the same as the address of the first member of her -- which is the first member of the "first"
 //    base class.
+//    NOTE: The term "first base class" referes to the actuall first base class name in the dervied class definition. For example, as in the case below where the dervied class is 
+//    defined as follows:class Derived : public Base1 , public Base2 --> Base1 is the "first base class" and Base2 is the second.
 // 
 // virtual table under the hood:
 // -----------------------------
 // Some notes about virtual functions and virtual tables:
+// 0) Once a class has AT LEAST one virtual function --> it implies that it will have a virtual table + virtual pointer.
 // 1) A virtual table is created ONCE for each class. It is located (implementation specific) somewhere (probably) in the BSS segment (all the data
 //    which is relevant for constructing the virtual table is known at compile time so it could be placed there).It is static. 
-// 2) For a specific object - once it has AT LEAST one virtual function --> it will have (contain) also an additional "virtual pointer".
-//    The objective of this pointer is to point to the virtual table.Its location will be (usually) at the first 4/8 bytes of the object (32/64 bit).
+// 2) The objective of the virtual pointer is to point to the virtual table.Its location will be (usually) at the first 4/8 bytes of the object (32/64 bit).
 // 3) Virtual table is basically a structure that holds all the function pointers to all the VIRTUAL functions of an object. Note: It DOES NOT hold the 
 //    pointers to non-virtual functions.
 // 4) In the case of multiple inheritence, the derived class will inherite all it's base class(es) virtual pointer, thus increasing its size respectevly. 
@@ -170,6 +172,7 @@ int main(int argc, char** argv)
 {
 	cout << "virtualTableExplained - start " << endl;
 	cout << "virtualTableExplained - sizeof(int) is:" << sizeof(int) << " bytes " << endl;
+	cout << "virtualTableExplained - sizeof(Derived) is:" << sizeof(Derived) << " bytes " << endl;
 	cout << "virtualTableExplained - creating Derived object on the heap" << endl;
 	Derived* d = new Derived;
 
