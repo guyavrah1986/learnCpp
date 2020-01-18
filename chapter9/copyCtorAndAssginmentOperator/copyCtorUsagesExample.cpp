@@ -25,7 +25,7 @@
 
 // Some notes:
 // -----------
-// a) The fact that we call the argument ctor from within the initialization list of the copy ctor (or of any other ctor) is possible only if we compile this code
+// a) The fact that we call the argument (regular) ctor from within the initialization list of the copy ctor (or of any other ctor) is possible only if we compile this code
 //    with C++11 compiler. Otherwise we will get a warning, or worse - undefined behaviour. 
 // 
 // ===================================================================================================================================================================

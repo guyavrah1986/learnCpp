@@ -5,7 +5,7 @@
 //
 // 1) Copy ctor MAY be called upon each one of the following cases:
 // a) Returning an object by value from a function. Note: This case (usually) might be optimized by the compiler (see RVO = return value optimization).
-// b) Sending an object as an arguemnt by value to a function.
+// b) Sending an object as an arguemnt by value to a function (meaning, the argument of the function is NOT a reference NOR pointer to an object).
 // c) Whenever a compiler generates a temporary object, for example inserting an object into an std::vector.
 // d) When constructing a NEW object from an exisiting one (i.e.- MyObj myObj = new MyObj;).
 // 
@@ -65,6 +65,7 @@ A::~A()
 	{
 		delete [] m_cstr;
 	}
+
 	cout << "A::~A - this:" << this << endl; 
 }
 
