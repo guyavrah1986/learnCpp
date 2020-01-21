@@ -47,6 +47,12 @@
 //     a) Calling a virtual function costs us in an extra read of the address of the actual function to be invoked during run-time (not so bad).
 //        The exact arithmetic being done is pointer read + offset manipulation. 
 //     b) Virtual functions CAN NOT be inline !!
+//     c) For each class that has a virtual table - a table with X entires of pointers will be created ONCE.For example, if class A has 3 virtual functions in it,
+//        then a virtual "table" (which usually be implemented by an array of pointers) will have 3 "entires" in it --> which will "cost" the program in 3 pointers
+//        in the memory. 
+//     d) For each instance of this class there will be an additional 4/8 bytes in its "size" due to the virtual pointer. 
+//        IMPORTANT NOTE: In case class A derived from TWO classes which each one of them has a vritual table of its own, then the "extra" size in memory for erach 
+//        instance of this class is 3 * size of pointer.
 //     
 // 
 // ===================================================================================================================================================================
