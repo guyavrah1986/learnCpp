@@ -8,7 +8,7 @@
 //    MyStr myStr1; --> defualt ctor
 //    MyStr myStr2 = myStr1; --> copy ctor
 //    MyStr myStr3(myStr1);  --> copy ctor
-//    MyStr myStr2 = myStr3; --> assginment operator= 
+//    MyStr myStr2 = myStr3; --> assginment operator= cause at this point myStr2 at this point already exists !!
 // 2) The default copy ctor that the compiler produces perfroms SHALLOW copy.
 //    BIG NOTE: In case our class has a member(s) that allocated dynamically memory, this (shallow copying) could lead to undefined behaviour. 
 // 
