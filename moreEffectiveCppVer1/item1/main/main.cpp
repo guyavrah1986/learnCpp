@@ -12,7 +12,7 @@
 *
 *  2) For conclusion, you should use:
 *  a) pointer - if you wish to have the ability NOT to point to an object (set the pointer to NULL) OR point to a different object.
-*  b) reference - if you know in advance that you will always refer to an (valid) object (it can not be NULL) and ONLY to that object.  
+*  b) reference - if you know in advance that you will always refer to an (valid) object (which can NOT be NULL) and ONLY to that object.  
 *
 */
 // =============================================================================================================================================
