@@ -18,6 +18,8 @@
 *    "good constranit" to imply on the developers of a derived class (cause usually they do not care NOR wish to care about these members).
 * a) In this case the base class DOES have a default ctor, so no "need" to know (send) arguemnts from the derived class ctor to the base class ctor.
 * b) In this case the base class DOES NOT have a default ctor, then the derived class MUST provide ALL arguemnts to the NON default ctor in its ctor. 
+*
+* 4) Template issues: When an object does that lacks a default ctor is ineligible for use with many template-based container classes
 */
 // ================================================================================================================================================================
 #include <iostream>
