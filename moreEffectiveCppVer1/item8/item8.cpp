@@ -20,26 +20,31 @@
 *    of the object.
 *    NOTE: Other than the buffer in which the object will be created, this fucntion ALSO MUST get all the neccessary arguments for the object.
 *
-* 4) Each call to operator new MUST have its corresponding call to operator delete. Similarly to the way operator new works, operator delete does the 
+* 4) Each call to operator new MUST have its corresponding call to delete operator. Similarly to the way operator new works, delete operator does the 
 *    opposite actions in the following order:
 * a) The delete operator calls the object's destructor.
-* b) The delete operator de-allocates the memory that was used by this object.
+* b) The delete operator de-allocates the memory that was used by this object and was allocated by new operator!!
 *
 * 5) Similarly to the case where we used operator new instead of the new operator, we need to call operator delete on the pointer that holds the 
 *    data (object) that was allocated via the operator new.
 * a) Note that it DOES NOT matter whether we invoke the operator delete on the pointer that holds the object OR on the pointer points to the "buffer"
 *    that was passed to the operator new.
 *
-* 6) When "combinign" the usage of operator new with operator delete, we are basically performing memory managment like malloc & free works.
+* 6) When "combining" the usage of operator new with operator delete, we are basically performing memory managment like malloc & free works.
 * a) Note that, the same as malloc works, the memory that was allocated via operator new, IS NOT initialized to a certain value --> it might contain garbage 
 *    values.
 *
 */
 // ================================================================================================================================================================
 
-#define _CRTDBG_MAP_ALLOC  // NOTE: the order of the includes that FOLLOWS this define is important !!!
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// NOTE: the order of the includes that FOLLOWS this define is important
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #include <stdlib.h>  
-#include <crtdbg.h> 
+#ifdef _WIN32
+	#define _CRTDBG_MAP_ALLOC  
+	#include <crtdbg.h> 
+#endif
 
 #include <iostream>
 
@@ -70,7 +75,7 @@ class B
 		}
 		else
 		{
-			cerr << "B::operator new - malloc was NOT abel to allocate memory, returning NULL pointer" << endl;
+			cerr << "B::operator new - malloc was NOT able to allocate memory, returning NULL pointer" << endl;
 			return NULL;
 		}
 	}
@@ -118,7 +123,7 @@ void item8Usage()
 
 	// 5) INTENTIOALLY DO NOT delete the other B object that pb2 points to (was allocated using placement new).
 	// This will generate a memory leak 
-	//delete pb2 OR delete p;
+	delete p; // OR delete pb2;
 
 	operatorNewAndOperatorDeleteCombined();
 	
@@ -135,6 +140,8 @@ int main(int argc, char** argv)
 	char c;
 	cin >> c;
 	cout << "\n \n main - end" << endl;
-	_CrtDumpMemoryLeaks();
+	#ifdef _WIN32
+		_CrtDumpMemoryLeaks();
+	#endif
 	return 0;
 }

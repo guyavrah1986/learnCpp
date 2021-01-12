@@ -2,9 +2,9 @@
 // ===================================================================================================================================================================
 // copy elision:
 // -------------
-// In both cases, the "phenonmana" that takes place is that of the compiler taking advatage of the fact that the local object is goiong to be returned by value any
-// way, is it "skips" the actual copying of the object and simply "directly" initializes the object in the main progrma (calling function).
-// This optimization is also known as the Return Value Optimization (RVO).
+// 1) In both cases (a and b), the "phenonmana" that takes place is that the compiler taking advatage of the fact that the local object is goiong to be returned by 
+//    value any way, so it "skips" the actual copying of the object and simply "directly" initializes the object into the "recving" object in the main program 
+//    (calling function). This optimization is also known as the Return Value Optimization (RVO).
 // 
 // 
 // ===================================================================================================================================================================
@@ -56,15 +56,15 @@ public:
 
 A returnObjectByValue1()
 {
-	cout << "returnObjectByValue1" << endl;
+	cout << "returnObjectByValue1" << endl; 
 	A a(12);
-	return a;
+	return a; //1a)
 }
 
 A returnObjectByValue2()
 {
 	cout << "returnObjectByValue2" << endl;
-	return A(15);
+	return A(15); //1b)
 }
 
 // ===================================================================================================================================================================
