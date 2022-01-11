@@ -280,15 +280,70 @@ void callNonVirtualFunctionViaPointerOrReference()	// 6)
 	cout << "callNonVirtualFunctionViaPointerOrReference - end" << endl;
 }
 
+
+void testFuntion()
+{
+	C c(1,2,3);
+	A* pa = &c;
+	A& ra = c;
+	B* pb = &c;
+	B& rb = c;
+	C* pc = &c;
+	C& rc = c;
+
+	cout << "testFuntion - calling pa.Func1()" << endl;
+	pa->Func1();
+	cout << "testFuntion - calling ra.Func1()" << endl;
+	ra.Func1();
+
+	cout << "testFuntion - calling pb.Func1()" << endl;
+	pb->Func1();
+	cout << "testFuntion - calling rb.Func1()" << endl;
+	rb.Func1();
+
+	cout << "testFuntion - calling cb.Func1()" << endl;
+	pc->Func1();
+	cout << "testFuntion - calling rc.Func1()" << endl;
+	rc.Func1();
+
+	cout << "testFuntion - calling c.Func1()" << endl;
+	c.Func1();
+	
+	cout << "testFuntion - calling c.Func2()" << endl;
+	c.Func2();
+	
+	cout << "testFuntion - calling c.Func3()" << endl;
+	c.Func3();
+
+
+		
+	cout << "testFuntion - calling pa->Func4()" << endl;
+	pa->Func4();
+	
+	cout << "testFuntion - calling pb->Func4()" << endl;
+	pb->Func4();
+	
+	cout << "testFuntion - calling pc->Func4()" << endl;
+	pc->Func4();
+
+	cout << "testFuntion - calling c.Func4()" << endl;
+	c.Func4();
+
+
+	
+}
+
 int main(int argc, char** argv)
 {
 	cout << "main - start" << endl;
 
+	/*
 	callVirtualFunctionWithPointerOrReferenceOfBaseClasses();
 	callVirtualFunctionDirectlyViaDerivedObject();
 	callNonVirtualFunctionDirectlyViaDerivedObject();
 	callNonVirtualFunctionViaPointerOrReference();
-	
+	*/
+	testFuntion();
 	cout << "main - end" << endl;
 	return 0;
 }
