@@ -13,6 +13,7 @@
 // d) https://stackoverflow.com/questions/50763943/using-attribute-packed-for-classes-in-gcc
 // e) https://stackoverflow.com/questions/4842056/do-static-members-of-a-class-occupy-memory-if-no-object-of-that-class-is-created
 // f) https://stackoverflow.com/questions/648647/in-c-where-in-memory-are-class-functions-put
+// g) https://stackoverflow.com/questions/137038/how-do-you-get-assembler-output-from-c-c-source-in-gcc
 // ===================================================================================================================================================================
 // ===================================================================================================================================================================
 #include <iostream>
@@ -20,56 +21,13 @@
 #include "A.h"
 #include "B.h"
 #include "C.h"
+#include "D.h"
+#include "E.h"
+#include "F.h"
+#include "accessClassMembersSingleInheritence.h"
+#include "accessMultipleInheritenceClassMembers.h"
 
 using namespace std;
-
-void accessClassMembers()
-{
-	string funcName = "accessClassMembers - ";
-	cout << funcName + "start" << endl;
-	cout << funcName + "the sizeof(int) is:" << sizeof(int) << endl;
-	cout << funcName + "the sizeof(char) is:" << sizeof(char) << endl;
-	cout << funcName + "the sizeof(short) is:" << sizeof(short) << endl;
-	A a1(1, 'a', 12);
-	cout << funcName + "the sizeof(a1) is:" << sizeof(a1) << endl;
-	A* pa1 = &a1;
-	cout << funcName + "the address that pa1 points to is:" << pa1 << endl;
-	int* pi = static_cast<int*>(&(pa1->m_i));
-	cout << funcName + "the FIRST class member of a1 is at address:" << pa1 << ", which is also pointed by pi:" << pi << ", and has the value:" << (*pi) << endl;
-	++pi;
-	char* pc = (char*)(pi);
-	cout << funcName + "the SECOND class member of a1 is at address:" << (void*)pc << ", and has the value:" << (*pc) << endl;
-	++pc;
-	short* ps = (short*)(pc);
-	cout << funcName + "the THIRD class member of a1 is at address:" << ps << ", and has the value:" << (*ps) << endl;
-	cout << funcName + "end" << endl;
-}
-
-
-void accessSingleInheritenceClassMembers()
-{
-	string funcName = "accessSingleInheritenceClassMembers - ";
-	cout << funcName + "start" << endl;
-	cout << funcName + "the sizeof(unsigned int) is:" << sizeof(unsigned int) << endl;
-	B b1(15, -1, 'a', 12);
-	cout << funcName + "the sizeof(b1) is:" << sizeof(b1) << endl;
-	A* pa1 = &b1;
-	B* pb1 = &b1;
-	cout << funcName + "the address that pa1 points to is:" << pa1 << endl;
-	cout << funcName + "the address that pb1 points to is:" << pb1 << endl;
-	int* pi = static_cast<int*>(&(pa1->m_i));
-	cout << funcName + "the FIRST class member of b1 (actually of A's part) is at address:" << pa1 << ", which is also pointed by pi:" << pi << ", and has the value:" << (*pi) << endl;
-	++pi;
-	char* pc = (char*)(pi);
-	cout << funcName + "the SECOND class member of b1 (actually of A's part) is at address:" << (void*)pc << ", and has the value:" << (*pc) << endl;
-	++pc;
-	short* ps = (short*)(pc);
-	cout << funcName + "the THIRD class member of b1 (actually of A's part) is at address:" << ps << ", and has the value:" << (*ps) << endl;
-	++ps;
-	unsigned int* pui = (unsigned int*)(ps);
-	cout << funcName + "the FOURTH class member of b1 is at address:" << pui << ", and has the value:" << (*pui) << endl;
-	cout << funcName + "end" << endl;
-}
 
 void accessChainedInheritenceClassMembers()
 {
@@ -104,9 +62,28 @@ void accessChainedInheritenceClassMembers()
 int main(int argc, char** argv)
 {
 	cout << "main - start" << endl;
-	//accessClassMembers();
-	//accessSingleInheritenceClassMembers();
-	accessChainedInheritenceClassMembers();
+	int choice;
+	cout << "main - please enter the number of function to execute:" << endl;
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		accessClassMembersSingleInheritence();
+		break;
+	case 2:
+		
+		break;
+	case 3:
+		accessChainedInheritenceClassMembers();
+		break;
+	case 4:
+		accessMultipleInheritenceClassMembers();
+		break;
+	default:
+		cout << "main - invalid choice" << endl;		
+		break;
+	}
+
 	cout << "main - end" << endl;
 	return 0;
 }
