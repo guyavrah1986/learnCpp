@@ -16,6 +16,9 @@ void accessClassMembersSingleInheritence()
 	cout << funcName + "the sizeof(a1) is:" << sizeof(a1) << endl;
 	A* pa1 = &a1;
 	B* pb1 = static_cast<B*>(&a1);
+	int m_iPa = *(static_cast<int*>(&(pa1->m_i)));
+	int m_iPb = *(static_cast<int*>(&(pb1->m_i)));
+
 	cout << funcName + "the address that pa1 points to is:" << pa1 << endl;
 	int* pi = static_cast<int*>(&(pa1->m_i));
 	cout << funcName + "the FIRST class member of a1 is at address:" << pa1 << ", which is also pointed by pi:" << pi << ", and has the value:" << (*pi) << endl;
