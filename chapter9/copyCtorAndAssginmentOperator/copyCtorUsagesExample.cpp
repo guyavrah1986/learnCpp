@@ -71,6 +71,7 @@ public:
 		if (m_cStr != nullptr)
 		{
 			delete [] m_cStr;
+			m_cStr = NULL;
 		}
 	}
 
@@ -78,6 +79,7 @@ public:
 	MyStr(const MyStr& other) : MyStr(other.m_cStr) //a) 
 	{
 		cout << "MyStr::MyStr& other (copy Ctor) - got other in the address of:" << &other << " ,created a copy in the address of:" << this << endl;	
+		this->m_cStr = other.m_sStr;
 	}
 
 	MyStr& operator=(const MyStr& rhs)

@@ -21,6 +21,17 @@
 
 using namespace std;
 
+class SampleClass
+{
+	SampleClass(string str="defaultVal") : m_str(str)
+	{
+		cout << "SampleClass::SampleClass" << endl;
+	}
+
+	private:
+		string& m_str;
+};
+
 void item1Usage()
 {
 	cout << "item1Usage - start" << endl;

@@ -4,7 +4,7 @@
 // Virtual pointer "offset phenomena":
 // ----------------------------------- 
 // 1) This simple example illustrate the "offest" in the class members that takes place once the virtual pointer exists.
-// 2) In case you uncomment both the comment section notes by 2), you will observer what happens when a class has at least one 
+// 2) In case you uncomment both the comment section notes by 2), you will observe what happens when a class has at least one 
 //    virtual function (in this case it is the dtor). When this happens ALL the class members are being "offseted" by a size of 
 //    a pointer (4/8 bytes typically), so in case you wish to "treat" (point) on a C++ class via a "simple" equivalent struct,
 //    an "adjsument" MUST take place - otherwise the struct pointer will be in offset. 
@@ -41,7 +41,7 @@ public:
 		cout << "SampleObj::~SampleObj" << endl;
 	}
 	*/
-		
+	//	
 	unsigned char m_a;
 	unsigned char m_b;
 	unsigned char m_c;

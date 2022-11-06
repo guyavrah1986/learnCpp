@@ -2,7 +2,7 @@
 
 struct A 
 {
-	A(const int& i, const char& c, const short s);
+	A(const int& i, const char& c, const short& s);
 	~A();
 
 	int m_i;

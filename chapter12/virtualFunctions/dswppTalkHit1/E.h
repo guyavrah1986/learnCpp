@@ -1,6 +1,6 @@
 #pragma once
 
-struct  E
+struct E
 {
 	E(const int& i);
 	~E();

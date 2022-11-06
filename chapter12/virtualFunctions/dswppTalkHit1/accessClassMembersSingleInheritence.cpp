@@ -12,10 +12,10 @@ void accessClassMembersSingleInheritence()
 	cout << funcName + "the sizeof(int) is:" << sizeof(int) << endl;
 	cout << funcName + "the sizeof(char) is:" << sizeof(char) << endl;
 	cout << funcName + "the sizeof(short) is:" << sizeof(short) << endl;
-	A a1(1, 'a', 12);
-	cout << funcName + "the sizeof(a1) is:" << sizeof(a1) << endl;
-	A* pa1 = &a1;
-	B* pb1 = static_cast<B*>(&a1);
+	B b1(1, 2, 'a', 12);
+	cout << funcName + "the sizeof(b1) is:" << sizeof(b1) << endl;
+	A* pa1 = &b1;
+	B* pb1 = &b1;
 	int m_iPa = *(static_cast<int*>(&(pa1->m_i)));
 	int m_iPb = *(static_cast<int*>(&(pb1->m_i)));
 

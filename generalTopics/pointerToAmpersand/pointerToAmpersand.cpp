@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int glob = 17;
+int glob = 17; // 0xccde4456
 
 void funcWithProblem(int* p) // 1)
 {
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 {
 	cout << "main - start" << endl;
 	
-	int n = 12;
+	int n = 12; // 0xcc1223ed
 	int* pMain = &n;
 
 	cout << "main - before calling ANY function, pMain points to value of:" << *pMain << " with address of:" << pMain << " the address of glob is:" << &glob << endl;

@@ -1,6 +1,6 @@
 #pragma once
 
-struct  F
+struct F
 {
 	F(const short& s);
 	~F();

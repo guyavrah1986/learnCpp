@@ -13,6 +13,7 @@
 // ===================================================================================================================================================================
 // =================================================================================================================================================================== 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -119,6 +120,12 @@ int main(int argc, char** argv)
 
 	cout << "main - about to invoke callByAddress" << endl;
 	callByAddress(&d);
+
+	vector<Base> baseVec;
+	cout << "main - about to insert d into the vector" << endl;
+	baseVec.push_back(d);
+	cout << "main - done inserting d into the vector, lets call its derived function" << endl;
+	baseVec[0].foo();
 
 	cout << "main - end" << endl;
 	return 0;
