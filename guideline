@@ -1,0 +1,14 @@
+=================================================================================
+This file contains an overall guideline regarding how to go voer the topics here:
+=================================================================================
+
+1) Constants (Chapter 2):
+- Literals
+- Symbolic consts
+- constexpr
+
+2) Namespaces (chapter 4):
+- C++ introduces the namespace "concept" that allows declaration of two (or more) things" (variables, functions, etc...) with the same name BUT in different namespaces.
+
+
+

@@ -2,7 +2,7 @@
 // ================================================================================================================================================
 // Chapter 2 - literals:
 // ---------------------
-// 1) C++ has two kinds of constants: literal, and symbolic. here we’ll talk about literals.
+// 1) C++ has two kinds of constants: literal, and symbolic. Here we’ll talk about literals.
 // 2) Literal constants (usually just called “literals”) are values inserted directly into the code. They are constants because you can’t change
 //    their values.
 // 3) Just like variables have a type, all literals have a type too. The type of a literal is assumed from the value and format of the 

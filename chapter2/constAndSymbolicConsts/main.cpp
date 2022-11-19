@@ -2,7 +2,7 @@
 // ============================================================================================================================================================
 // Chapter 2 - const, constexpr and symbolic const:
 // -----------------------------------------------
-// 1) C++ has two kinds of constants: literal, and symbolic. here we’ll talk about consts and symbolic consts.
+// 1) C++ has two kinds of constants: literal, and symbolic. Here we’ll talk about consts and symbolic consts.
 // 2) Basically, const is a variable that is defined using the const keyword and MUST be initialized upon declration.
 // 3) Constant variable can be initialized via other variables, which are NOT neccessarly constants.
 // 4) Variables defined as constexpr are constant as well. YET one major difference between them and "normal const" variabels, is that they create
