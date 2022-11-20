@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int glob = 17; // 0xccde4456
+int glob = 17; 
 
 void funcWithProblem(int* p) // 1)
 {
@@ -26,7 +26,7 @@ void ptrToPtrSolution(int** pp)
 	*pp = &glob;
 }
 
-void refToPtrSoltion(int *& rp)
+void refToPtrSoltion(int*& rp)
 {
 	rp = &glob;
 }
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 {
 	cout << "main - start" << endl;
 	
-	int n = 12; // 0xcc1223ed
+	int n = 12;
 	int* pMain = &n;
 
 	cout << "main - before calling ANY function, pMain points to value of:" << *pMain << " with address of:" << pMain << " the address of glob is:" << &glob << endl;
