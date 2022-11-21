@@ -7,7 +7,7 @@
 //    In all other files within the project (i.e.- NOT where the global variable is defined, like in this file) we need to "decalre" it using 
 //    the "extern" keyword - like telling to the compiler:"Someone else in another place defined it, its all good..."
 // 2) A forward declration is required for functions as well when we DO NOT include the header file in which they are defined in (in this case
-//    the function fooInGlobalFile is defined in another cpp file and NOT in a header file, so we MUST forward-decalre it.
+//    the function fooInGlobalFile is defined in another cpp file and NOT in a header file, so we MUST forward-decalre it).
 ///   NOTE:In the more "common case" where we DO include the header file in which the function is declared, then we DO NOT need to (also) forward-
 //    declare the function cause, unless specified otherwise, every function automatically has the "extern" modifier in her defenition (one can 
 //    think of it that in this manner the function is defined as "public" function, where if it was defined with the static modifer it was 
@@ -30,10 +30,10 @@
 
 using namespace std;
 
-// 1) forward declration for the global variable
+// 1) forward declration for the global variable which was defined in another "place"
 extern int g_x;
 
-//2) forward declration for the "global" function
+//2) forward declration for the "global" function which was defined in another "place"
 void fooInGlobalFile();
 
 // 3)

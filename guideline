@@ -10,5 +10,15 @@ This file contains an overall guideline regarding how to go voer the topics here
 2) Namespaces (chapter 4):
 - C++ introduces the namespace "concept" that allows declaration of two (or more) things" (variables, functions, etc...) with the same name BUT in different namespaces.
 
+3) Global variables (chapter 4):
+- Use of global static variable (can be accessed only in file scope).
+- Functions by defualt are "defined" with the extern access specifier, so unless they are defined as static, they CAN be accessed outside of the file in which they are defined in.
 
+4) Signed Vs unsigned values (chapter 4):
+- Each integral type in C/C++ can store at max its max value. When trying to assgin more to it, a "modulus assginment" takes place.
+- Pay attention that when performing arithmetic operations on two integral types, it is prefered to have them both as signed types.
+- For loop iterators, on the other hand, it is prefered (usually) to have the type as unsigned.
+
+5) Conversion (chapter 8):
+- TODO: continue the link of different types of cating in C++
 

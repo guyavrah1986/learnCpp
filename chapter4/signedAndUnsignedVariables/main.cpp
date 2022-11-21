@@ -24,7 +24,7 @@ void arithmeticOperationsOnSignedAndUnsigned()
 	unsigned int c {3};
 	unsigned int d {5};
 	cout << funcName + "when performing substruction of two UNSIGNED variables in which the first is SMALLER" << endl;
-	cout << funcName + "substructing c=" << c << " from d=" << d << " in which they are both UNSIGNED results in:" << (c - d) << endl;
+	cout << funcName + "substructing c=" << c << " from d=" << d << " in which they are both UNSIGNED results in:" << (c - d) << endl; //2)
 }
 
 void assginMoreThanMaxVal()
@@ -36,7 +36,7 @@ void assginMoreThanMaxVal()
 	cout <<  funcName + "uc is now:" << +uc << endl;
 	unsigned char addToUc = 3;
 	uc += addToUc;
-	cout << funcName + "after adding " << + addToUc << " to uc it is now:" << +uc << endl;
+	cout << funcName + "after adding " << + addToUc << " to uc it is now:" << +uc << endl; //1)
 }
 
 int main(int argc, char** argv)
