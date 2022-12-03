@@ -1,0 +1,5 @@
+# defines to be included (or not) for the compilation
+
+DEFINES+= -D ECI_TP_ADD -D ECI_TP_REMOVE -D ECI_TP_EDIT
+
+
