@@ -1,6 +1,7 @@
 // ===================================================================================================================================================================
 // ===================================================================================================================================================================
-// 
+// NOTE: Compile the program with the following line:
+// g++ -g -O0 -c -fverbose-asm -Wa,-adhln virtualTableExplained.cpp > test.lst
 // Class members location upon multiple inheritance:
 // -------------------------------------------------
 // 1) When a derived class inherites from two (or more) "base" classes, the layout of all her members (hers + the inherited ones) are according to the order of the 
@@ -57,9 +58,8 @@
 // 
 // ===================================================================================================================================================================
 // ===================================================================================================================================================================
-
-
 #include <iostream>
+
 using namespace std;
 
 static void print_object(const char *name, void *this_, size_t size)
@@ -72,6 +72,40 @@ static void print_object(const char *name, void *this_, size_t size)
 		printf("  pointer[%zu] == %p\n", i, tmp[i]);
 	}
 }
+
+class AwithoutVirtualPointer
+{
+public:	
+	AwithoutVirtualPointer(int a, int b) : m_a(a), m_b(b)
+	{
+		cout << "AwithoutVirtualPointer::AwithoutVirtualPointer" << endl;
+	}
+
+	~AwithoutVirtualPointer()
+	{
+		cout << "AwithoutVirtualPointer::~AwithoutVirtualPointer" << endl;
+	}
+
+	int m_a;
+	int m_b;
+};
+
+class A
+{
+public:
+	A(int a, int b) : m_a(a), m_b(b)
+	{
+		cout << "A::A - setting m_a to:" << m_a << ", and m_b to:" << m_b << endl;
+	}
+
+	virtual ~A()
+	{
+		cout << "A::~A" << endl;
+	}
+	
+	int m_a;
+	int m_b;
+};
 
 class Base1
 {
@@ -140,12 +174,6 @@ public:
 	int m_derived;
 };
 
-// ===================================================================================================================================================================
-// ===================================================================================================================================================================
-// main program:
-// ===================================================================================================================================================================
-// ===================================================================================================================================================================
-
 void example1()
 {
 	/*
@@ -174,18 +202,42 @@ void example1()
 	delete d;
 }
 
+void displayBothClassA()
+{
+	string funcName = "displayBothClassA - ";
+	cout << funcName + "start" << endl;
+	cout << funcName + "creating A on the stack of the function" << endl;
+	A a(12,17);
+	A* pa = &a;
+	void* addressOfA = static_cast<void*>(pa);
+	cout << funcName + "the address of &a is:" << static_cast<void*>(addressOfA) << endl;
+	cout << funcName + "the address of the first member of A is:" << static_cast<void*>(&pa->m_a) << endl;
+
+	AwithoutVirtualPointer a2(12,17);
+	AwithoutVirtualPointer* pa2 = &a2;
+	void* addressOfA2 = static_cast<void*>(pa2);
+	cout << funcName + "the address of &a2 is:" << static_cast<void*>(addressOfA2) << endl;
+	cout << funcName + "the address of the first member of AwithoutVirtualPointer is:" << static_cast<void*>(&pa2->m_a) << endl;
+	cout << funcName + "end" << endl;
+}
+
 int main(int argc, char** argv)
 {
 	cout << "virtualTableExplained - start " << endl;
 	cout << "virtualTableExplained - sizeof(int) is:" << sizeof(int) << " bytes " << endl;
 	cout << "virtualTableExplained - sizeof(Derived) is:" << sizeof(Derived) << " bytes " << endl;
+	cout << "virtualTableExplained - sizeof(void*) is:" << sizeof(void*) << " bytes " << endl;
 	cout << "virtualTableExplained - creating Derived object on the heap" << endl;
+	
+	displayBothClassA();	
+	/*
 	Derived* d = new Derived;
-
+	
 	cout << "virtualTableExplained - calling d->func1()" << endl;
 	d->func1();
 	cout << "virtualTableExplained - deleting the Derived object" << endl;
 	delete (d);
+	*/
 	cout << "virtualTableExplained - end" << endl;
 	return 0;
 }
