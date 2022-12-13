@@ -105,7 +105,6 @@
 
 using namespace std;
 
-
 class AwithoutVirtualPointer
 {
 public:	
