@@ -20,5 +20,6 @@ This file contains an overall guideline regarding how to go voer the topics here
 - For loop iterators, on the other hand, it is prefered (usually) to have the type as unsigned.
 
 5) Conversion (chapter 8):
-- TODO: continue the link of different types of cating in C++
+- In C++ there are four types of casting:
+- static_cast: The usage of it is, in contrast to "plain old" C style cast, is that using the static_cast, there is a compile time checking to verify that the pointee is pointed by a "valid" pointer
 
