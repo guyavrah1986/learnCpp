@@ -17,6 +17,7 @@
 //    file1.o:file1.cpp:(.text+0x0): first defined here
 //    collect2: error: ld returned 1 exit status
 //    --> which says in a direct manner that there is multiple defintion here, so the linker is a bit confused on how to resolve this situation.
+// 4) Linker:
 // =================================================================================================================================================
 // =================================================================================================================================================
 #include <iostream>
