@@ -3,12 +3,11 @@
 // Chapter 8 - type conversions:
 // ----------------------------
 // 1) In C/C++ when some operation between two types is being conducted it is CRUCIAL to understand how the compiler treats this operation.
-// 2) 
-//    https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/
+// 2) https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/
 // 3) One of the main benefits of using static_cast is that it will raise compilation error when an inappropriate cating, mainly of pointers, will
 //    take place.
 // 4) Pointing on an "in-compatible" type can cause issue, like in the example in this case. Note that it is possible only using the C-style cast
-//    and would have not be possible with static_cast.
+//    and would have not been possible with static_cast.
 // =================================================================================================================================================
 // =================================================================================================================================================
 
