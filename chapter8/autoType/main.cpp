@@ -9,11 +9,9 @@
 // 3) Note that the compiler needs, neverthelss, some sort of "clue" 
 // =================================================================================================================================================
 // =================================================================================================================================================
-
 #include <iostream>
 
 using namespace std;
-
 
 int main(int argc, char** argv)
 {
@@ -23,7 +21,9 @@ int main(int argc, char** argv)
 	auto d2 {d1}; // 2)
 	auto y; // 3)
 	
-
+	map<string, string> address_book;
+	address_book["Alex"] = "webmaster@cprogramming.com";
+	auto itr = address_book.begin();
 
 	cout << "main - end" << endl;
 	return 0;
