@@ -5,9 +5,10 @@
 // ----------------------------------
 // 1) The unique_ptr SHOULD typically be created on the STACK, i.e.- be an automatic variable. This is the only way to be sure that it will be deleted no matter what is 
 //    flow of the program, because if the unique_ptr itself is allocated on the heap, it ALSO needs to be managed (not only the object it points to).
-// 2) It implements move semantics - so it is not possible to copy ("share") the pointer. This way, it is guarenteed that it is at any given time owned by one a
-//    single "entity" in the program, and once there is no such entity --> it is deleted automatically.
-// 3) Returning std::unique_ptr from a function is OK. When it is passed from the calle to the caller - move semantics takes action and passes "ownership" of the 
+// 2) It implements move semantics (and disable copy semantics) - so it is not possible to copy ("share") the pointer. This way, it is guarenteed that at any given time
+//    it is owned by a single "entity" in the program, and once there is no such entity --> it is deleted automatically. Sort of garabage collector for a single object
+//    only with one (good) exception that the timing at which the disposal of this object is 100% deterministic - right after it is no longer owned by anyone.
+// 3) Returning std::unique_ptr from a function is OK. When it is passed from the calle back to the caller - move semantics takes action and passes "ownership" of the 
 //    unique_ptr from the function to the unique_ptr that receives it (remember that copy semantics are disabled for std::unique_ptr).It is probably the best type 
 //    of pointer to return from a factory method.
 //    NOTE:In case your compiler is C++14 and on, it is prefered to create a unique_ptr using the std::make_uniuqe method.It is primarly best practice to use it against
@@ -62,7 +63,6 @@ public:
 
 private:
 	unique_ptr<MyObj> m_up;
-
 };
 
 void illustrateUniquePtrMoveSemantics()	// 2)
